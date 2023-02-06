@@ -1,4 +1,4 @@
-package com.roorjoan.entity;
+package com.roorjoan.api.usuario.entity;
 
 import java.io.Serializable;
 

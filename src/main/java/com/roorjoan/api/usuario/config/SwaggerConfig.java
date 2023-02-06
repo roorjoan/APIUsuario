@@ -1,4 +1,4 @@
-package com.roorjoan.config;
+package com.roorjoan.api.usuario.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

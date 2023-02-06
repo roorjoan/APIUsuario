@@ -1,4 +1,4 @@
-package com.roorjoan.repository;
+package com.roorjoan.api.usuario.repository;
 
 import java.io.Serializable;
 

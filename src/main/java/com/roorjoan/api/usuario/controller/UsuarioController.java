@@ -1,6 +1,7 @@
-package com.roorjoan.controller;
+package com.roorjoan.api.usuario.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -13,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.roorjoan.entity.Usuario;
-import com.roorjoan.service.UsuarioService;
+import com.roorjoan.api.usuario.entity.Usuario;
+import com.roorjoan.api.usuario.service.UsuarioService;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -37,6 +38,15 @@ public class UsuarioController {
 	public ResponseEntity<?> getAll() {
 		try {
 			return ResponseEntity.status(HttpStatus.OK).body(usuarioService.findAll());
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		}
+	}
+
+	@GetMapping("/paged")
+	public ResponseEntity<?> getAll(Pageable pageable) {
+		try {
+			return ResponseEntity.status(HttpStatus.OK).body(usuarioService.findAll(pageable));
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}

@@ -1,10 +1,13 @@
-package com.roorjoan.service;
+package com.roorjoan.api.usuario.service;
 
 import java.io.Serializable;
 import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.roorjoan.repository.IBaseRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+import com.roorjoan.api.usuario.repository.IBaseRepository;
 
 public abstract class BaseServiceImpl<E, ID extends Serializable> implements IBaseService<E, ID> {
 
@@ -16,6 +19,16 @@ public abstract class BaseServiceImpl<E, ID extends Serializable> implements IBa
 	public List<E> findAll() throws Exception {
 		try {
 			return baseRepository.findAll();
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
+	}
+
+	@Override
+	@Transactional
+	public Page<E> findAll(Pageable pageable) throws Exception {
+		try {
+			return baseRepository.findAll(pageable);
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());
 		}

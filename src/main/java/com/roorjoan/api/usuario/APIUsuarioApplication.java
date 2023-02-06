@@ -1,4 +1,4 @@
-package com.roorjoan;
+package com.roorjoan.api.usuario;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
